@@ -46,14 +46,7 @@ jobs:
 
       - name: Build project
         run: npm run build
-
-      - name: Verify dist directory
-        run: |
-          if [ "${{ runner.os }}" = "Windows" ]; then
-            dir dist
-          else
-            ls -la dist/
-          fi
+        
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -75,8 +68,6 @@ jobs:
           name: build-ubuntu-latest-node-18
           path: ./artifact
 
-      - name: List artifact contents
-        run: ls -la ./artifact
 
       - name: Simulate deployment
         run: echo "Deploying artifact for Ubuntu"
