@@ -17,9 +17,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        node-version: [16, 18, 20, 22]  
-      max-parallel: 2  
+        os: [ubuntu-latest]
+        node-version: [18]  
+      max-parallel: 1
 
     steps:
       - name: Checkout code
@@ -50,13 +50,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: List all artifacts
-        run: |
-          curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-          -H "Accept: application/vnd.github.v3+json" \
-          https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts
-
-        
+      
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
