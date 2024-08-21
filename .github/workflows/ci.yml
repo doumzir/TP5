@@ -46,6 +46,9 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Verify dist directory
+        run: ls -la dist/
+
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
@@ -61,6 +64,9 @@ jobs:
         with:
           name: build-ubuntu-latest-node-18
           path: ./artifact
+
+      - name: List artifact contents
+        run: ls -la ./artifact
 
       - name: Simulate deployment
         run: echo "Deploying artifact for Ubuntu with Node 18"
