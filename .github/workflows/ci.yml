@@ -48,7 +48,12 @@ jobs:
         run: npm run build
 
       - name: Verify dist directory
-        run: ls -la dist/
+        run: |
+          if [ "${{ runner.os }}" = "Windows" ]; then
+            dir dist
+          else
+            ls -la dist/
+          fi
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
