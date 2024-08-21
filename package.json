@@ -1,0 +1,8 @@
+{
+	"name": "github-actions-tp",
+	"version": "1.0.0",
+	"scripts": {
+		"build": "mkdir -p dist && cp src/index.js dist/index.js"
+	},
+	"dependencies": {}
+}
