@@ -10,7 +10,7 @@ on:
       - main
       - develop
   schedule:
-    - cron: '0 0 * * 1'  # Tous les lundis à minuit
+    - cron: '0 0 * * 1' 
 
 jobs:
   build:
@@ -18,18 +18,8 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        node-version: [16, 18, 20]
-        exclude:
-          - os: ubuntu-latest
-            node-version: 16
-          - os: windows-latest
-            node-version: 18
-          - os: macos-latest
-            node-version: 20
-        include:
-          - os: windows-latest
-            node-version: 22
-      max-parallel: 2
+        node-version: [16, 18, 20, 22]  
+      max-parallel: 2  
 
     steps:
       - name: Checkout code
@@ -69,4 +59,4 @@ jobs:
         run: ls -la ./artifact
 
       - name: Simulate deployment
-        run: echo "Deploying artifact for Ubuntu with Node 18"
+        run: echo "Deploying artifact for Ubuntu"
